@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-LABEL authors="shado"
+LABEL authors="Micah Potter"
 
 ENTRYPOINT ["top", "-b"]
 # Use an official Python runtime
