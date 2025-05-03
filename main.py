@@ -8,6 +8,7 @@ import os
 from dotenv import load_dotenv
 
 
+
 async def send_message_to_channel(channel_id, message):
     """Send a message to the specified Discord channel."""
     channel = client.get_channel(channel_id)
