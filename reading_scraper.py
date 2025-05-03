@@ -13,8 +13,16 @@ def fetch_daily_readings(url=None):
 
     soup = BeautifulSoup(resp.content, "html.parser")
     # Define the sections to extract
-    sections = ["Reading 1", "Responsorial Psalm", "Reading 2", "Gospel"]
+    sections = ["Reading 1", "Reading 2", "Gospel"]
     readings = {}
+
+    lectionary = soup.find("div", class_="wr-block b-lectionary padding-top-s padding-bottom-xxs bg-white")
+    if lectionary:
+        h2 = lectionary.find("h2")
+        readings['title'] = h2.get_text(strip=True) if h2 else None
+    else:
+        readings['title'] = None
+
 
     for sec in sections:
         # Locate the section header
